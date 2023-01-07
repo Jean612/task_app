@@ -19,7 +19,7 @@ class Task < ApplicationRecord
   
   validates :title, presence: true
   validates :priority, presence: true
-  has_rich_text :description
+  #has_rich_text :description
   
   before_save :set_initial_state
   
