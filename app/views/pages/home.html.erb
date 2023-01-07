@@ -1,0 +1,4 @@
+<h1>Bienvenido <strong> <%= current_user ? current_user.fullname : "Usuario no logeado" %> </strong> </h1>
+<% if current_user && current_user.photo_profile.key %>
+  <%= cl_image_tag current_user.photo_profile.key, height: 300, width: 400, crop: :fill %>
+<% end %>
