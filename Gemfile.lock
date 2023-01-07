@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/ctran/annotate_models.git
+  revision: ae0b79c0f816b2433a3f00b9a73b3aea1bd3e84b
+  specs:
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
+
+GIT
   remote: https://github.com/heartcombo/simple_form.git
   revision: 31fe25504771bd6cd425b585a4e0ed652fba4521
   specs:
@@ -284,6 +292,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate!
   bootsnap
   bootstrap (~> 5.2.3)
   bootstrap_form (~> 5.1)
