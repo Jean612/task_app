@@ -1,0 +1,56 @@
+@import "colors";
+
+// Colors
+$primary: $blue;
+$secondary: $gray-600;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$light: $gray-100;
+$dark: $gray-900;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $cyan,
+  "warning": $yellow,
+  "danger": $red,
+  "light": $light,
+  "dark": $dark,
+);
+
+// Create your own map
+$custom-colors: (
+  "middle": $cyan,
+  "low": $gray-600,
+  "high": $yellow,
+  "urgent": $red
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1320px,
+  xxl: 1600px
+);
+
+
+$modal-backdrop-bg: $black;
+$modal-backdrop-opacity: .8;
+$modal-content-border-radius: 5px;
+
+$modal-fade-transform: translate(0, -50px);
+$modal-show-transform: none;
+$modal-transition: transform .7s ease-out;
+$modal-scale-transform: scale(1.02);
+
+$modal-sm: 300px;
+$modal-md: 500px;
+$modal-lg: 800px;
+$modal-xl: 1140px;
