@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "pages#home"
   get "/homepage", to: "pages#home"
-  resources :tasks
+  resources :tasks do
+    collection do
+      get :order_list
+    end
+  end
 end
