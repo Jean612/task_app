@@ -1,40 +1,17 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name),
-  data: {turbo: false}) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class='container px-5 mt-3'>
+  <h1>Registrate o 
+  <span><%= link_to "Inicia sesión", new_session_path(resource_name), class:"link-success text-decoration-none" %></span>
+  </h1>
   
-  <div class="field">
-    <%= f.label :fullname %><br />
-    <%= f.text_field :fullname, autofocus: true, autocomplete: "fullname" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :photo_profile %><br />
-    <%= f.file_field :photo_profile%>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name),
+    data: {turbo: false}) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    
+    <%= f.text_field :fullname, autofocus: true, autocomplete: "fullname", floating: true, label: "Nombre" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", floating: true, label: "Correo" %>
+    <%= f.file_field :photo_profile, label: "Elige una foto de perfil" %>
+    <%= f.password_field :password, autocomplete: "new-password", help:("#{@minimum_password_length} characters minimum" if @minimum_password_length), floating: true, label: "Contraseña"  %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", floating: true, label: "Confirmar contraseña" %>
+    <%= f.submit "Registrar", class:'btn btn-primary d-block' %>
+  <% end %>
+</div>
