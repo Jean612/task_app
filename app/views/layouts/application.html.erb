@@ -6,11 +6,17 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'application.bootstrap', 'data-turbolinks-track': 'reload' %>
     <%= javascript_importmap_tags %>
+    <%= javascript_import_module_tag "@fortawesome/fontawesome-free" %>
+    <%= javascript_import_module_tag "popper" %>
+    <%= javascript_import_module_tag "bootstrap" %>
+    <%= javascript_import_module_tag "@rails/actiontext" %>
   </head>
 
   <body>
+    <%= render 'layouts/shared/navbar' %>
     <%= yield %>
+    <%= render "layouts/shared/flash_messages" %>
   </body>
 </html>
