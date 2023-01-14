@@ -2,7 +2,7 @@
   <div class="row my-3" data-controller="modal-task">
     <% if tasks.any? %>
       <% tasks.each do |task| %>
-        <div class="col-4 my-2" >
+        <div class="col-sm-12 col-lg-4 my-2" >
           <%= render partial:"task_item", locals: {task: task} %>
         </div>
       <% end %>
