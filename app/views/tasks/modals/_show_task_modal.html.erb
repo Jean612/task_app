@@ -1,5 +1,5 @@
 <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
     <div class="modal-content">
       <%= turbo_frame_tag 'show_content_modal' do %>
         <div class="modal-header">
@@ -7,7 +7,7 @@
             <span class="placeholder col-6"></span>
           </h5>
         </div>
-        <div class="modal-body">
+        <div class="modal-body modal-dialog-scrollable">
           <p class="card-text placeholder-glow">
             <span class="placeholder col-7"></span>
             <span class="placeholder col-4"></span>

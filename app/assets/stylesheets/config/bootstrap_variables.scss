@@ -46,8 +46,8 @@ $modal-backdrop-opacity: .8;
 $modal-content-border-radius: 5px;
 
 $modal-fade-transform: translate(0, -50px);
-$modal-show-transform: none;
-$modal-transition: transform .7s ease-out;
+$modal-show-transform: translate(0, -50px);
+$modal-transition: transform 1s ease-out;
 $modal-scale-transform: scale(1.02);
 
 $modal-sm: 300px;

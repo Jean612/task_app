@@ -1,6 +1,7 @@
 <%= turbo_frame_tag 'show_content_modal' do %>
   <div class="modal-header">
     <h2 class="modal-title" id="taskModalLabel"><%= @task.title %></h2>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   </div>
   <div class="modal-body">
     <div class="row">
@@ -44,8 +45,5 @@
         </blockquote>
       </div>
     </div>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
   </div>
 <% end %>

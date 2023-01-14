@@ -1,0 +1,17 @@
+<%= turbo_frame_tag "show_content_modal" do %>
+  <div class="modal-header">
+    <h2 class="modal-title" id="taskModalLabel">Crear nueva tarea</h2>
+  </div>
+  <%= bootstrap_form_for(@task, label_errors: true) do |f| %>
+    <div class="modal-body">
+      <%= f.text_field :title, label: "Título", floating: true %>
+      <%= f.text_area :description, label: "Descripción",floating: true, rows: 200  %>
+      <%= f.collection_radio_buttons :priority, Task::PRIORITIES, :first, :second, label: "Elige la prioridad ", inline: true, label_html: { class: "d-block" } %>
+      <%= f.date_field :deadline, floating: true, label: "Fecha límite" %>
+    </div>
+    <div class="modal-footer d-flex justify-content-end">
+      <%= f.submit "Crear tarea", class: "btn btn-primary" %>
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+    </div>
+  <% end %>
+<% end %>

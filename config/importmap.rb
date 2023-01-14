@@ -10,3 +10,5 @@ pin "bootstrap", to: 'bootstrap.min.js', preload: true
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.js"
 pin "@fortawesome/fontawesome-free", to: "https://ga.jspm.io/npm:@fortawesome/fontawesome-free@6.2.1/js/all.js"
+pin "sweetalert", to: "https://ga.jspm.io/npm:sweetalert@2.1.2/dist/sweetalert.min.js"
+pin "process", to: "https://ga.jspm.io/npm:@jspm/core@2.0.0-beta.27/nodelibs/browser/process-production.js"

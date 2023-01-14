@@ -1,6 +1,2 @@
 <%= turbo_stream.replace "tasks_list", partial: 'task_list', locals: { tasks: @tasks } %>
-<%= turbo_stream.replace "create_task_form" do %>
-  <%= turbo_frame_tag "create_task_form" do %>
-    <%= link_to 'Create new task', new_task_path, class: 'btn btn-success', data: { turbo_frame: 'create_task_form' } %>
-  <% end %>
-<% end %>
+<%= turbo_stream.replace "show_content_modal", partial: 'form' %>

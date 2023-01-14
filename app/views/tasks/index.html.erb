@@ -1,10 +1,10 @@
 <%= render partial:'tasks/modals/show_task_modal' %>
-<div class="container container-xxl">
+<div class="container container-xxl" data-controller="modal-task">
   <div class="d-flex justify-content-between align-items-center mt-2">
     <h1>Tareas</h1>
 
     <%= turbo_frame_tag "create_task_form" do %>
-      <%= link_to 'Create new task', new_task_path, class: 'btn btn-success', data: { turbo_frame: 'create_task_form' } %>
+      <%= link_to 'Añadir tarea', new_task_path, class: 'btn btn-success', data: { turbo_frame: 'show_content_modal', action: "click->modal-task#showModal", }, type: "button" %>
     <% end %>
   </div>
   
