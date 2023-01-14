@@ -1,6 +1,9 @@
 class Task < ApplicationRecord
   belongs_to :user
   
+  SORT_ORDER_STATE = %w(opened to_do paused in_progress revision completed)
+  SORT_ORDER_PRIORITY = %w(low middle high urgent)
+  
   STATES = {
     "opened": "Abierto",
     "to_do": "Por hacer", 
@@ -11,8 +14,8 @@ class Task < ApplicationRecord
   }
   
   PRIORITIES = {
-    "middle": "Medio",
     "low": "Baja",
+    "middle": "Medio",
     "high": "Alto",
     "urgent": "Para mañana"
   }
@@ -21,7 +24,7 @@ class Task < ApplicationRecord
   validates :priority, presence: true
   #has_rich_text :description
   
-  before_save :set_initial_state
+  before_create :set_initial_state
   
   private
   

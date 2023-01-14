@@ -1,0 +1,28 @@
+<%= turbo_frame_tag "task_#{task.id}" do %>
+  <div class="card">
+    <h5 class="card-header d-flex justify-content-between align-items-center">
+      <%= Task::STATES[task.state.to_sym] %>
+      <small class="badge rounded-pill text-bg-<%= task.priority %>"><%= Task::PRIORITIES[task.priority.to_sym] %></small>
+    </h5>
+    <div class="card-body">
+    
+      <h5 class="card-title"><%= task.title %></h5>
+      <h6 class="card-subtitle mb-2 text-muted">Fecha límite: <%= task.deadline %></h6>
+      <p class="card-text"><%= task.description.present? ? task.description.truncate(200) : "Sin descripción" %></p>
+      
+      <div class='mt-2 d-flex justify-content-end'>
+        <%= link_to task_path(task), class:"mx-2 btn btn-warning", data: { action: "click->modal-task#showModal", turbo_frame: 'show_content_modal' }, type: "button" do %>
+          <i class="fas fa-eye"></i>
+        <% end %>
+  
+        <%= link_to edit_task_path(task), class:"mx-2 btn btn-primary" do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+        
+        <%= link_to task_path(task), data: {confirm: "Are you sure?", "turbo-method": :delete}, class:"mx-2 btn btn-danger" do %>
+          <i class="fas fa-eraser"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,7 +1,11 @@
-<%= bootstrap_form_for(@task) do |f| %>
-  <%= f.text_field :title %>
-  <%= f.text_area :description %>
-  <%= f.collection_radio_buttons :priority, Task::PRIORITIES, :first, :second, label: "Elige la prioridad" %>
-  <%= f.date_field :deadline %>
-  <%= f.submit %>
+<%= turbo_frame_tag "create_task_form" do %>
+  <div class="container">
+    <%= bootstrap_form_for(@task) do |f| %>
+      <%= f.text_field :title %>
+      <%= f.text_area :description %>
+      <%= f.collection_radio_buttons :priority, Task::PRIORITIES, :first, :second, label: "Elige la prioridad" %>
+      <%= f.date_field :deadline %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 <% end %>

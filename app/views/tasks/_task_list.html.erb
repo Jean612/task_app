@@ -1,0 +1,15 @@
+<%= turbo_frame_tag "tasks_list" do %>
+  <div class="row my-3" data-controller="modal-task">
+    <% if tasks.any? %>
+      <% tasks.each do |task| %>
+        <div class="col-4 my-2" >
+          <%= render partial:"task_item", locals: {task: task} %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="alert alert-danger" role="alert">
+        Aún no ha creado tareas
+      </div>
+    <% end %>
+  </div>
+<% end %>

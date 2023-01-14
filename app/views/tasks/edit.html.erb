@@ -1,2 +1,15 @@
-<h1>Tasks#edit</h1>
-<p>Find me in app/views/tasks/edit.html.erb</p>
+<%= turbo_frame_tag "task_#{@task.id}" do %>  
+  <div class="card">
+    <h5 class="card-header">Editar tarea</h5>
+    <div class="card-body">
+      <%= bootstrap_form_for(@task) do |f| %>
+        <%= f.text_field :title %>
+        <%= f.text_area :description %>
+        <%= f.collection_radio_buttons :priority, Task::PRIORITIES, :first, :second, label: "Elige la prioridad" %>
+        <%= f.collection_radio_buttons :state, Task::STATES, :first, :second, label: "Cambia el estado" %>
+        <%= f.date_field :deadline %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
