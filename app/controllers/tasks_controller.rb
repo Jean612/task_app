@@ -62,7 +62,7 @@ class TasksController < ApplicationController
       @tasks.order(id: :desc)
     end
     
-    render turbo_stream: turbo_stream.replace("tasks_list", partial: 'task_list', locals: { tasks: @tasks })
+    render turbo_stream: turbo_stream.replace("tasks_list", partial: 'task_card_view', locals: { tasks: @tasks })
   end
   
   private

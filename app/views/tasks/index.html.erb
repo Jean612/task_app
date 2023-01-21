@@ -10,11 +10,17 @@
   
   <hr/>
   
-  <div class="d-flex justify-content-end">
+  <div class="d-flex justify-content-between">
+    <%= render 'view_buttons' %>
     <%= render partial: "order_buttons"%>
   </div>
 
-
-  <%= render partial: "task_list", locals: { tasks: @tasks} %>
+  <% if params[:view].nil? || params[:view] == 'cards' %>
+    <%= render partial: "task_card_view", locals: { tasks: @tasks} %>  
+  <% elsif params[:view] == 'dashboard' %>
+    <%= render partial: "task_dashboard_view", locals: { tasks: @tasks} %>  
+  <% elsif params[:view] == 'list' %>
+    <%= render partial: "task_list_view", locals: { tasks: @tasks} %>  
+  <% end %>
 
 </div>

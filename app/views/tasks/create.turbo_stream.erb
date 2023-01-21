@@ -1,2 +1,2 @@
-<%= turbo_stream.replace "tasks_list", partial: 'task_list', locals: { tasks: @tasks } %>
+<%= turbo_stream.replace "tasks_list", partial: 'task_card_view', locals: { tasks: @tasks } %>
 <%= turbo_stream.replace "show_content_modal", partial: 'form' %>
