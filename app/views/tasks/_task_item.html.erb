@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "task_#{task.id}" do %>
-  <div class="card">
+  <div class="card" data-controller="sweet-alert" data-id=<%= task.id %>>
     <h5 class="card-header d-flex justify-content-between align-items-center">
       <%= Task::STATES[task.state.to_sym] %>
       <small class="badge rounded-pill text-bg-<%= task.priority %>"><%= Task::PRIORITIES[task.priority.to_sym] %></small>
@@ -19,8 +19,11 @@
           <i class="far fa-edit"></i>
         <% end %>
         
-        <%= link_to task_path(task, view: "list"), data: {confirm: "Are you sure?", "turbo-method": :delete}, class:"mx-2 btn btn-danger" do %>
+        <button class="me-2 shadow-hover btn btn-danger" data-sweet-alert-target="button" >
           <i class="fas fa-eraser"></i>
+        </button>
+        
+        <%= link_to task_path(task, view: "dashboard"), data: {"turbo-method": :delete}, class:"hidden", id:"delete-task-#{task.id}" do %>
         <% end %>
       </div>
     </div>
