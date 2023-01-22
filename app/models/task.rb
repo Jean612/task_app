@@ -29,6 +29,7 @@ class Task < ApplicationRecord
   private
   
   def set_initial_state
+    return unless self.state.nil?
     self.state = "opened"
   end
 end

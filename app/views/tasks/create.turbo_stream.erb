@@ -1,2 +1,8 @@
-<%= turbo_stream.replace "tasks_list", partial: 'task_card_view', locals: { tasks: @tasks } %>
+<% if @view == 'card' %>
+  <%= turbo_stream.replace "tasks_list", partial: 'task_card_view', locals: { tasks: @tasks } %>
+<% elsif @view == "dashboard" %>
+  <%= turbo_stream.replace "tasks_list", partial: 'task_dashboard_view', locals: { tasks: @tasks } %>
+<% end %>
+
+
 <%= turbo_stream.replace "show_content_modal", partial: 'form' %>
