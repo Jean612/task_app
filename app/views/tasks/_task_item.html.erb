@@ -23,7 +23,7 @@
           <i class="fas fa-eraser"></i>
         </button>
         
-        <%= link_to task_path(task, view: "dashboard"), data: {"turbo-method": :delete}, class:"hidden", id:"delete-task-#{task.id}" do %>
+        <%= link_to task_path(task, view: "list"), data: {"turbo-method": :delete}, class:"hidden", id:"delete-task-#{task.id}" do %>
         <% end %>
       </div>
     </div>
