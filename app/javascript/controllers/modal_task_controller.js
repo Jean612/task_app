@@ -1,7 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
-
 // Connects to data-controller="modal-task"
-export default class extends Controller {
+export default class extends Controller { 
   showModal(){
     const modal = new bootstrap.Modal("#taskModal");
     modal.show();

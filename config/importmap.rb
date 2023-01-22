@@ -13,3 +13,4 @@ pin "@fortawesome/fontawesome-free", to: "https://ga.jspm.io/npm:@fortawesome/fo
 pin "sweetalert", to: "https://ga.jspm.io/npm:sweetalert@2.1.2/dist/sweetalert.min.js"
 pin "process", to: "https://ga.jspm.io/npm:@jspm/core@2.0.0-beta.27/nodelibs/browser/process-production.js"
 pin "sortablejs", to: "https://ga.jspm.io/npm:sortablejs@1.15.0/modular/sortable.esm.js"
+pin "sweetalert2", to: "https://ga.jspm.io/npm:sweetalert2@11.7.0/dist/sweetalert2.all.js"

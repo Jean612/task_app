@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "task_#{task.id}_dashboard" do %>
-  <div class="card d-flex flex-row bg-<%= task.priority %> border-0 bg-opacity-25">
+  <div class="card d-flex flex-row bg-<%= task.priority %> border-0 bg-opacity-25" data-controller="sweet-alert" data-id=<%= task.id %> >
     <div class="align-self-center px-2">
-      <i class="fa-solid fa-grip-vertical handle text-dark text-opacity-50" style="cursor:grab;"></i>
+      <i class="fa-solid fa-grip-vertical handle text-dark text-opacity-50" style="cursor:grab; font-size: 1.25rem;"></i>
     </div>
     <div class="card-body">
       <h5 class="card-title"><%= task.title %></h5>
@@ -17,8 +17,11 @@
           <i class="far fa-edit"></i>
         <% end %>
         
-        <%= link_to task_path(task, view: "dashboard"), data: {confirm: "Are you sure?", "turbo-method": :delete}, class:"me-2 shadow-hover btn btn-danger" do %>
+        <button class="me-2 shadow-hover btn btn-danger" data-sweet-alert-target="button" >
           <i class="fas fa-eraser"></i>
+        </button>
+        
+        <%= link_to task_path(task, view: "dashboard"), data: {"turbo-method": :delete}, class:"hidden", id:"delete-task-#{task.id}" do %>
         <% end %>
       </div>
     </div>
