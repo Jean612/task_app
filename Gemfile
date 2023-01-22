@@ -52,6 +52,8 @@ gem "font-awesome-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
+gem "aws-sdk-s3", "~> 1.116"
+gem "ruby-vips" 
 
 # Gemfile
 gem "devise"
