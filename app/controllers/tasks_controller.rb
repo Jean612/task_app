@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :update_state]
   before_action :set_tasks, only: [:create, :destroy, :order_list]
   
   def index
@@ -10,25 +10,36 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @view = params[:view]
+    p @view
   end
 
   def update
-    respond_to do |format|
-      if @task.update(task_params)
+    @view = params[:task][:view]
+    p @view
+    if @task.update(task_params.except(:view))
+      respond_to do |format|
         format.html { redirect_to tasks_path }
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("task_#{@task.id}", partial: 'task_item', locals: { task: @task }) }
-      else
-        format.html { redirect_to edit_task_path }
+        format.turbo_stream
       end
+    else
+      render :edit
     end
   end
 
   def new
     @task = Task.new
+    @view = "card"
+  end
+  
+  def dashboard_add
+    @task = Task.new
+    @view = "dashboard"
   end
 
   def create
-    @task = Task.new(task_params)
+    @view = params[:task][:view]
+    @task = Task.new(task_params.except(:view))
     @task.user = current_user
     
     if @task.save
@@ -42,7 +53,8 @@ class TasksController < ApplicationController
   end
 
   def destroy
-     respond_to do |format|
+    @view = params[:view]
+    respond_to do |format|
       if @task.destroy
         format.html { redirect_to tasks_path }
         format.turbo_stream
@@ -62,7 +74,15 @@ class TasksController < ApplicationController
       @tasks.order(id: :desc)
     end
     
-    render turbo_stream: turbo_stream.replace("tasks_list", partial: 'task_list', locals: { tasks: @tasks })
+    render turbo_stream: turbo_stream.replace("tasks_list", partial: 'task_card_view', locals: { tasks: @tasks })
+  end
+  
+  def update_state
+    if @task.update(state: params[:state])
+      render json: { message: "Se actualizó la tarea #{@task.title}", error: false}
+    else   
+      render json: { message: "Ocurrió un error al actualizar la tarea", error: true}
+    end
   end
   
   private
@@ -76,6 +96,6 @@ class TasksController < ApplicationController
   end
   
   def task_params
-    params.require(:task).permit(:title, :description, :state, :priority, :deadline)
+    params.require(:task).permit(:title, :description, :state, :priority, :deadline, :view)
   end
 end

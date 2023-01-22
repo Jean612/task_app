@@ -1,0 +1,16 @@
+.column-dashboard {
+  min-width: 400px !important;
+  border-radius: 1px solid black;
+}
+
+.container-dashboard {
+  height: auto;
+}
+
+
+@media (max-width: 540px) {
+  .column-dashboard {
+      min-width: 300px !important;
+      border-radius: 1px solid black;
+  }
+}

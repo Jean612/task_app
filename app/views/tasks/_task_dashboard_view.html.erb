@@ -1,0 +1,27 @@
+<%= turbo_frame_tag "tasks_list" do %>
+  <div class="d-flex my-4 gap-3 overflow-auto container-dashboard py-4" data-controller="sortable-lists">
+    <% Task::STATES.each do |state| %>
+      <div class="card px-0 column-dashboard">
+        <div class="card-header">
+          <%= state.last %>
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled task-sortable-list" data-state=<%= state.first.to_s %>>
+            <% tasks.where(state: state.first.to_s).each do |task| %>
+              <li class="mb-2" data-id=<%= task.id %>>
+                <%= render partial:"task_item_dashboard", locals: {task: task} %>
+              </li>
+            <% end %>
+          </ul>
+          <%= link_to dashboard_add_tasks_path, class: "mb-2", data: {turbo_frame: 'show_content_modal', action: "click->modal-task#showModal"} do %>
+            <div class="card text-center bg-success border-0 bg-opacity-50 shadow-hover">
+              <div class="card-body">
+                <i class="fa-solid fa-plus text-dark"></i>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

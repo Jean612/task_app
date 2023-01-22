@@ -1,0 +1,26 @@
+<%= turbo_frame_tag "task_#{task.id}_dashboard" do %>
+  <div class="card d-flex flex-row bg-<%= task.priority %> border-0 bg-opacity-25">
+    <div class="align-self-center px-2">
+      <i class="fa-solid fa-grip-vertical handle text-dark text-opacity-50" style="cursor:grab;"></i>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= task.title %></h5>
+      <h6 class="card-subtitle mb-2 text-muted">Fecha límite: <%= task.deadline %></h6>
+      <h6 class="card-subtitle mb-2 text-muted">Prioridad: <%= Task::PRIORITIES[task.priority.to_sym] %></h6>
+      <p class="card-tex"><%= task.description.present? ? task.description.truncate(30) : "Sin descripción" %></p>
+      <div class='mt-2 d-flex justify-content-start'>
+        <%= link_to task_path(task), class:"me-2 shadow-hover btn btn-warning", data: { action: "click->modal-task#showModal", turbo_frame: 'show_content_modal' }, type: "button" do %>
+          <i class="fas fa-eye"></i>
+        <% end %>
+  
+        <%= link_to edit_task_path(task, view: "dashboard"), class:"me-2 shadow-hover btn btn-primary", data: { action: "click->modal-task#showModal", turbo_frame: 'show_content_modal' }, type: "button" do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+        
+        <%= link_to task_path(task, view: "dashboard"), data: {confirm: "Are you sure?", "turbo-method": :delete}, class:"me-2 shadow-hover btn btn-danger" do %>
+          <i class="fas fa-eraser"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

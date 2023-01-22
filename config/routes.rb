@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   resources :tasks do
     collection do
       get :order_list
+      get :dashboard_add
+    end
+    
+    member do
+      put :update_state
     end
   end
 end

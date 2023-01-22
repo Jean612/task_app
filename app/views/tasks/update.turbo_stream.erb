@@ -1,0 +1,5 @@
+<% if @view == 'list' %>
+  <%= turbo_stream.replace "task_#{@task.id}", partial: 'task_item', locals: { task: @task } %>
+<% elsif @view == "dashboard" %>
+  <%= turbo_stream.replace "task_#{@task.id}_dashboard", partial: 'task_item_dashboard', locals: { task: @task } %>
+<% end %>

@@ -2,19 +2,21 @@
 <div class="container container-xxl" data-controller="modal-task">
   <div class="d-flex justify-content-between align-items-center mt-2">
     <h1>Tareas</h1>
-
-    <%= turbo_frame_tag "create_task_form" do %>
-      <%= link_to 'Añadir tarea', new_task_path, class: 'btn btn-success', data: { turbo_frame: 'show_content_modal', action: "click->modal-task#showModal", }, type: "button" %>
+  </div>
+  
+  <div class="d-flex justify-content-sm-between flex-wrap gap-3 justify-content-center">
+    <%= render 'view_buttons' %>
+    <% if params[:view] == 'cards' %>
+      <%= render partial: "order_buttons"%>
     <% end %>
   </div>
-  
-  <hr/>
-  
-  <div class="d-flex justify-content-end">
-    <%= render partial: "order_buttons"%>
-  </div>
 
-
-  <%= render partial: "task_list", locals: { tasks: @tasks} %>
+  <% if params[:view].nil? || params[:view] == 'cards' %>
+    <%= render partial: "task_card_view", locals: { tasks: @tasks} %>  
+  <% elsif params[:view] == 'dashboard' %>
+    <%= render partial: "task_dashboard_view", locals: { tasks: @tasks} %>  
+  <% elsif params[:view] == 'list' %>
+    <%= render partial: "task_list_view", locals: { tasks: @tasks} %>  
+  <% end %>
 
 </div>

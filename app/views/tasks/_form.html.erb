@@ -2,16 +2,24 @@
   <div class="modal-header">
     <h2 class="modal-title" id="taskModalLabel">Crear nueva tarea</h2>
   </div>
-  <%= bootstrap_form_for(@task, label_errors: true) do |f| %>
+  <%= bootstrap_form_for(@task) do |f| %>
     <div class="modal-body">
+      <%= f.hidden_field :view, value: @view %>
       <%= f.text_field :title, label: "Título", floating: true %>
       <%= f.text_area :description, label: "Descripción",floating: true, rows: 200  %>
-      <%= f.collection_radio_buttons :priority, Task::PRIORITIES, :first, :second, label: "Elige la prioridad ", inline: true, label_html: { class: "d-block" } %>
+      <div class="card p-2 mb-3">
+        <label for="task_priority"> Prioridad </label>
+        <%= f.collection_radio_buttons :priority, Task::PRIORITIES, :first, :second, hide_label: true, inline: true, wrapper: { class: 'mb-0' } %>
+      </div>
+      <div class="card p-2 mb-3">
+        <label for="task_priority"> Estado </label>
+        <%= f.collection_radio_buttons :state, Task::STATES, :first, :second, hide_label: true, inline: true, wrapper: { class: 'mb-0' }  %>
+      </div>
       <%= f.date_field :deadline, floating: true, label: "Fecha límite" %>
     </div>
     <div class="modal-footer d-flex justify-content-end">
       <%= f.submit "Crear tarea", class: "btn btn-primary" %>
-      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
     </div>
   <% end %>
 <% end %>

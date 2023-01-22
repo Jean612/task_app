@@ -1,0 +1,29 @@
+
+// Estilos para scroll bar
+
+.container-dashboard::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.container-dashboard::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+
+.container-dashboard::-webkit-scrollbar-button:increment,
+.container-dashboard::-webkit-scrollbar-button {
+  display: none;
+}
+
+.container-dashboard::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.container-dashboard::-webkit-scrollbar-thumb {
+  background-color: #acffdf;
+  border-radius: 20px;
+  border: 2px solid #f1f2f300;
+}
+
+.container-dashboard::-webkit-scrollbar-track {
+  border-radius: 10px;
+}

@@ -1,9 +1,9 @@
 <%= turbo_frame_tag "buttons_order" do %>
   <div class="btn-group dropstart">
-    <button type="button" class="btn btn-light shadow dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    <button type="button" class="btn btn-glass dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
       Ordenar por
     </button>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu shadow">
       <li>
         <%= link_to order_list_tasks_path(field:"created_at", order:"asc"), class:"dropdown-item" do %>
           Los mas antiguos
