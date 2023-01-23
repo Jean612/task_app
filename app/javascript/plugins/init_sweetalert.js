@@ -1,10 +1,10 @@
-import swal from 'sweetalert';
+import Swal from 'sweetalert2'
 
 const initSweetalert = (element, options = {}, callback = () => {}) => {
   const swalButton = element;
   if (swalButton) { // protect other pages
     swalButton.addEventListener('click', () => {
-      swal(options).then(callback); // <-- add the `.then(callback)`
+      Swal.fire(options).then(callback); // <-- add the `.then(callback)`
     });
   }
 };
