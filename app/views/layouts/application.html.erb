@@ -18,6 +18,9 @@
   <body>
     <%= render 'layouts/shared/navbar' %>
     <%= yield %>
-    <%= render "layouts/shared/flash_messages" %>
+    <div id="flash">
+      <%= render "layouts/shared/flash_messages" %>
+    </div>
+    <%= render "layouts/shared/update_state_message" %>
   </body>
 </html>
