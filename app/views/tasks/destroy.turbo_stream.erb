@@ -3,3 +3,5 @@
 <% elsif @view == "dashboard" %>
   <%= turbo_stream.remove "task_#{@task.id}_dashboard" %>  
 <% end %>
+
+<%#<%= turbo_stream.update "flash", partial:"layouts/shared/flash_messages" %>%>

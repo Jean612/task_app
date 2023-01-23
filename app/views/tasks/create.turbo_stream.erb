@@ -1,12 +1,15 @@
 <% if @view == 'card' %>
-  <%= turbo_stream.append "card-view-tasks" do %>
+  <%= turbo_stream.prepend "card-view-tasks" do %>
     <div class="col-sm-12 col-lg-4 my-2" >
       <%= render partial:"task_item", locals: {task: @task} %>
     </div>
   <% end %>
 <% elsif @view == "dashboard" %>
-  <%= turbo_stream.replace "tasks_list", partial: 'task_dashboard_view', locals: { tasks: @tasks } %>
+  <%= turbo_stream.prepend "column-#{@task.state}" do %>
+    <li class="mb-2" data-id=<%= @task.id %>>
+      <%= render partial:"task_item_dashboard", locals: {task: @task} %>
+    </li>
+  <% end %>
 <% end %>
 
-
-<%= turbo_stream.replace "show_content_modal", partial: 'form' %>
+<%= turbo_stream.update "flash", partial:"layouts/shared/flash_messages" %>
