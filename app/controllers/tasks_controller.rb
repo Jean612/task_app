@@ -11,19 +11,20 @@ class TasksController < ApplicationController
 
   def edit
     @view = params[:view]
-    p @view
   end
 
   def update
     @view = params[:task][:view]
-    p @view
-    if @task.update(task_params.except(:view))
-      respond_to do |format|
+    respond_to do |format|
+      if @task.update(task_params.except(:view))
         format.html { redirect_to tasks_path }
+        flash.now[:notice] = "Se editó la tarea correctamente"
         format.turbo_stream
+      else
+        format.html { redirect_to tasks_path }
+        flash.now[:alert] = "Ocurrió un error al editar la tarea"
+        format.turbo_stream { render turbo_stream: turbo_stream.update("flash", partial:"layouts/shared/flash_messages") }
       end
-    else
-      render :edit
     end
   end
 
@@ -42,13 +43,21 @@ class TasksController < ApplicationController
     @task = Task.new(task_params.except(:view))
     @task.user = current_user
     
-    if @task.save
-      respond_to do |format|
+    respond_to do |format|
+      if @task.save
         format.html { redirect_to tasks_path }
+        flash.now[:notice] = "Se añadió la tarea correctamente"
         format.turbo_stream
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        flash.now[:alert] = "Ocurrio un error al crear la tarea"      
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("flash", partial:"layouts/shared/flash_messages"),
+            turbo_stream.update("show_content_modal", partial: 'form')
+          ] 
+        end
       end
-    else
-      render :new
     end
   end
 
@@ -57,9 +66,12 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.destroy
         format.html { redirect_to tasks_path }
+        #flash.now[:notice] = "Se eliminó la tarea correctamente"
         format.turbo_stream
       else
         format.html { redirect_to tasks_path, notice: @task.errors.full_message }
+        #flash.now[:alert] = "Ocurrió un error al eliminar la tarea"
+        #format.turbo_stream { render turbo_stream: turbo_stream.update("flash", partial:"layouts/shared/flash_messages") }
       end
     end
   end
