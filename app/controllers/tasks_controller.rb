@@ -79,9 +79,11 @@ class TasksController < ApplicationController
   def order_list
     
     if params[:field].present?
-      @tasks = @tasks.order("#{params[:field]} #{params[:order]}") if params[:field] == "created_at"
-      @tasks = @tasks.in_order_of(:priority, params[:order] == "asc" ? Task::SORT_ORDER_PRIORITY : Task::SORT_ORDER_PRIORITY.reverse ) if params[:field] == "priority"
-      @tasks = @tasks.in_order_of(:state, Task::SORT_ORDER_STATE) if params[:field] == "state"
+      @tasks = @tasks.order("#{params[:field]} #{params[:order]}") if params[:field] == "created_at" 
+      if params[:field] == "priority"
+        @tasks = params[:order] == "asc" ? @tasks.order_by_priority_asc : @tasks.order_by_priority_desc
+      end
+      @tasks = @tasks.order_by_state_asc if params[:field] == "state"
     else
       @tasks.order(id: :desc)
     end
