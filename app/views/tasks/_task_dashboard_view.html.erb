@@ -13,7 +13,7 @@
               </li>
             <% end %>
           </ul>
-          <%= link_to dashboard_add_tasks_path, class: "mb-2", data: {turbo_frame: 'show_content_modal', action: "click->modal-task#showModal"} do %>
+          <%= link_to dashboard_add_tasks_path(state: k.to_s), class: "mb-2", data: {turbo_frame: 'show_content_modal', action: "click->modal-task#showModal"} do %>
             <div class="card text-center bg-success border-0 bg-opacity-50 shadow-hover">
               <div class="card-body">
                 <i class="fa-solid fa-plus text-dark"></i>

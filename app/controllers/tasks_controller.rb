@@ -34,7 +34,7 @@ class TasksController < ApplicationController
   end
   
   def dashboard_add
-    @task = Task.new
+    @task = Task.new(state: params[:state])
     @view = "dashboard"
   end
 
