@@ -4,6 +4,11 @@ class Task < ApplicationRecord
   SORT_ORDER_STATE = %w(opened to_do paused in_progress revision completed)
   SORT_ORDER_PRIORITY = %w(low middle high urgent)
   
+  scope :by_state, -> (state) { where(state: state) }
+  scope :order_by_priority_asc, -> { in_order_of(:priority, SORT_ORDER_PRIORITY) } 
+  scope :order_by_priority_desc, -> { in_order_of(:priority, SORT_ORDER_PRIORITY.reverse) } 
+  scope :order_by_state_asc, -> { in_order_of(:state, SORT_ORDER_STATE) } 
+  
   STATES = {
     "opened": "Abierto",
     "to_do": "Por hacer", 
