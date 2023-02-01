@@ -1,8 +1,8 @@
 <%= turbo_frame_tag "show_content_modal" do %>  
-  <div class="modal-header">
-    <h2 class="modal-title" id="taskModalLabel">Editar tarea</h2>
-  </div>
   <%= bootstrap_form_for(@task) do |f| %>
+    <div class="modal-header">
+      <h2 class="modal-title" id="taskModalLabel">Editar tarea</h2>
+    </div>
     <div class="modal-body">
       <%= f.hidden_field :view, value: @view %>
       <%= f.text_field :title, label: "Título", floating: true %>
