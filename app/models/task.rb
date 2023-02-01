@@ -27,9 +27,18 @@ class Task < ApplicationRecord
   
   validates :title, presence: true
   validates :priority, presence: true
-  #has_rich_text :description
+  has_rich_text :content
+  has_many_attached :files
   
   before_create :set_initial_state
+  
+  def abstract
+    if self.content.present?
+      self.content.to_plain_text.truncate(50)
+    else
+      return "Sin descripción"
+    end
+  end
   
   private
   
