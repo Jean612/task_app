@@ -7,7 +7,7 @@
       <h5 class="card-title"><%= task.title %></h5>
       <h6 class="card-subtitle mb-2 text-muted">Fecha límite: <%= task.deadline %></h6>
       <h6 class="card-subtitle mb-2 text-muted">Prioridad: <%= Task::PRIORITIES[task.priority.to_sym] %></h6>
-      <p class="card-tex"><%= task.description.present? ? task.description.truncate(30) : "Sin descripción" %></p>
+      <p class="card-tex"><%= task.abstract %></p>
       <div class='mt-2 d-flex justify-content-start'>
         <%= link_to task_path(task), class:"me-2 shadow-hover btn btn-warning", data: { action: "click->modal-task#showModal", turbo_frame: 'show_content_modal' }, type: "button" do %>
           <i class="fas fa-eye"></i>
