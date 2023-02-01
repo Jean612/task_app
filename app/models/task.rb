@@ -63,7 +63,12 @@ end
 #
 # Indexes
 #
-#  index_tasks_on_user_id  (user_id)
+#  index_tasks_on_created_at  (created_at)
+#  index_tasks_on_deadline    (deadline)
+#  index_tasks_on_priority    (priority)
+#  index_tasks_on_state       (state)
+#  index_tasks_on_title       (title)
+#  index_tasks_on_user_id     (user_id)
 #
 # Foreign Keys
 #
