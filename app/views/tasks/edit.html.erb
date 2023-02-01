@@ -12,10 +12,13 @@
         <label for="task_priority"> Prioridad </label>
         <%= f.collection_radio_buttons :priority, Task::PRIORITIES, :first, :second, hide_label: true, inline: true, wrapper: { class: 'mb-0' } %>
       </div>
-      <div class="card p-2 mb-3">
-        <label for="task_priority"> Estado </label>
-        <%= f.collection_radio_buttons :state, Task::STATES, :first, :second, hide_label: true, inline: true, wrapper: { class: 'mb-0' }  %>
-      </div>
+      <% unless @view == "dashboard" %>
+        <div class="card p-2 mb-3">
+          <label for="task_priority"> Estado </label>
+          <%= f.collection_radio_buttons :state, Task::STATES, :first, :second, hide_label: true, inline: true, wrapper: { class: 'mb-0' }  %>
+        </div>
+      <% end %>
+      
       <%= f.date_field :deadline, floating: true, label: "Fecha límite" %>
     </div>
     <div class="modal-footer d-flex justify-content-end">
