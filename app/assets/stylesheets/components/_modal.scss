@@ -1,0 +1,8 @@
+.modal-dialog-centered {
+  display: flex;
+  align-items: stretch !important;
+  min-height: calc(100% - var(--bs-modal-margin) * 2);
+}
+
+$modal-xl: 95vw;
+
