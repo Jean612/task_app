@@ -1,0 +1,85 @@
+// Estilos para scroll bar
+
+.container-dashboard::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.container-dashboard::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+
+.container-dashboard::-webkit-scrollbar-button:increment,
+.container-dashboard::-webkit-scrollbar-button {
+  display: none;
+}
+
+.container-dashboard::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.container-dashboard::-webkit-scrollbar-thumb {
+  background-color: #acffdf;
+  border-radius: 20px;
+  border: 2px solid #f1f2f300;
+}
+
+.container-dashboard::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+body::-webkit-scrollbar:vertical {
+  width: 15px;
+  border: 2px solid #ffffff;
+}
+
+body::-webkit-scrollbar-button:increment,
+body::-webkit-scrollbar-button {
+  display: none;
+}
+
+body::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #acffdf;
+  border-radius: 20px;
+  border: 3px solid #ffffff;
+}
+
+body::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+
+.modal::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.modal::-webkit-scrollbar:vertical {
+  width: 15px;
+  border: 2px solid #ffffff00;
+}
+
+.modal::-webkit-scrollbar-button:increment,
+.modal::-webkit-scrollbar-button {
+  display: none;
+}
+
+.modal::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background-color: #acffdf;
+  border-radius: 20px;
+  border: 3px solid #ffffff00;
+}
+
+.modal::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
