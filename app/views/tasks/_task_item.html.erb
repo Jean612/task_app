@@ -8,7 +8,7 @@
     
       <h5 class="card-title"><%= task.title %></h5>
       <h6 class="card-subtitle mb-2 text-muted">Fecha límite: <%= task.deadline %></h6>
-      <p class="card-text text-truncate"><%= task.description.present? ? task.description.truncate(200) : "Sin descripción" %></p>
+      <p class="card-text text-truncate"><%= task.abstract %></p>
       
       <div class='mt-2 d-flex justify-content-end'>
         <%= link_to task_path(task), class:"mx-2 shadow-hover btn btn-warning", data: { action: "click->modal-task#showModal", turbo_frame: 'show_content_modal' }, type: "button" do %>

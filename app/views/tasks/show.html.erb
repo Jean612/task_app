@@ -40,7 +40,7 @@
       <div class="col-sm-12 col-lg-8">
         <h3>Descripción</h3>
         <blockquote class="blockquote mb-0">
-          <p><%= @task.description %> </p>
+          <p><%= raw(@task.content) %> </p>
           <footer class="blockquote-footer"><cite title="Source Title">Ultima actualización: <%= @task.updated_at.strftime('%m/%d/%Y') %></cite></footer>
         </blockquote>
       </div>
